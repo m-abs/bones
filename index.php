@@ -6,7 +6,7 @@
     
 				    <?php get_sidebar('left'); // sidebar 1 ?>
 			
-				    <div id="main" class="sixcol first clearfix" role="main">
+				    <div id="main" class="sixcol clearfix" role="main">
 
 					    <?php if (have_posts()) : while (have_posts()) : the_post(); ?>
 					

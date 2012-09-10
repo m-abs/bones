@@ -21,7 +21,7 @@ taxonomy-shoes.php
 			
 				    <?php get_sidebar('left'); // sidebar 1 ?>
 			
-				    <div id="main" class="eightcol first clearfix" role="main">
+				    <div id="main" class="eightcol clearfix" role="main">
 				
 					    <h1 class="archive-title h2"><span><?php _e("Posts Categorized:", "bonestheme"); ?></span> <?php single_cat_title(); ?></h1>
 

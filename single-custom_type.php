@@ -21,7 +21,7 @@ single-bookmarks.php
 			
 				    <?php get_sidebar('left'); // sidebar 1 ?>
 			
-				    <div id="main" class="eightcol first clearfix" role="main">
+				    <div id="main" class="eightcol clearfix" role="main">
 
 					    <?php if (have_posts()) : while (have_posts()) : the_post(); ?>
 					

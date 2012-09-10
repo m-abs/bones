@@ -6,7 +6,7 @@
 				
 				    <?php get_sidebar('left'); // sidebar 1 ?>
 			
-				    <div id="main" class="eightcol first clearfix" role="main">
+				    <div id="main" class="eightcol clearfix" role="main">
 				
 						<h1 class="archive-title h2"><?php post_type_archive_title(); ?></h1>
 

@@ -11,15 +11,19 @@ and will be used across all viewports.
 
 ******************************************************************/
 
+$content-border: 1px solid black;
+
 /*********************
 GENERAL STYLES
 *********************/
 
 body {
 	font-family: Georgia, serif;
-	font-size: 14px;
+	font-size: 10pt;
 	line-height: 1.5;
 	color: #565656;
+
+	@include css-gradient(#e8e8e8, #7a787a);
 }
 
 /********************
@@ -86,11 +90,12 @@ LINK STYLES
 *********************/
 
 a, a:visited {
-	color: $bones-pink;
+	color: $bones-blue;
+	font-family: 'Lucida Grande', sans-serif;
 
 	/* on hover */
 	&:hover, &:focus {
-		color: lighten($bones-pink, 9%);
+		color: lighten($bones-blue, 9%);
 	}
 
 	/* on click */
@@ -159,9 +164,40 @@ h5, .h5 {
 HEADER SYTLES
 *********************/
 
-.header {}
+.header {
+	padding-top: 10px;
 
-	#logo {}
+	#inner-header {
+		@include border-radius(10px, 0, 0, 10px);
+
+		padding-top: 10px;
+		background-color: #225663;
+		border-top: $content-border;
+		border-left: $content-border;
+		border-right: $content-border;
+
+		#logo {
+			padding-left: 20px;
+			$text-color: #f1d67e;
+	
+			margin-top: 0px;
+			margin-bottom: 0px;
+			color: $text-color;
+			a {
+				font-family: 'Sonsie One', cursive;
+				color: $text-color;
+			}
+			text-shadow: #000000 5px 1px 6px;
+		}
+	
+		.description {
+			padding-left: 20px;
+			color: #efffe6;
+			font-family: Asul, sans-serif;
+		}
+
+	}
+}
 
 /*********************
 NAVIGATION STYLES
@@ -174,6 +210,37 @@ easily just write on group of styles for
 the navs on the site and our css is cleaner
 and moe scalable.
 */
+
+header {
+	nav[role=navigation] {
+		.menu {
+			ul {
+				$background-color: #27567a;
+
+				text-align: right;
+				background-color: $background-color;
+				li {
+					@include css-transition(background-color,550ms);
+					display: inline-block;
+					padding: 0.2em 0.5em;
+					background-color: $background-color;
+					&:hover {
+						background-color: lighten($background-color,15%);
+					}
+
+					a {
+						color: #c6c8c9;
+						font-size: 1.2em;
+						font-family: Asul, sans-serif;
+						font-weight: bold;
+						padding: 4px 20px;
+						height: 15px;
+					}
+				}
+			}
+		}
+	}
+}
 
 .nav {
 	border: 1px solid #ccc;
@@ -233,16 +300,16 @@ and moe scalable.
 
 		}
 
-	} /* end .menu li */
+		/* highlight current page */
+		&.current-menu-item,
+		&.current_page_item,
+		&.current-page-ancestor {
 
-	/* highlight current page */
-	li.current-menu-item,
-	li.current_page_item,
-	li.current-page-ancestor {
+			a {}
 
-		a {}
+		}  /* end current highlighters */
 
-	}  /* end current highlighters */
+	} /* end .nav li */
 
 } /* end .nav */
 
@@ -252,7 +319,11 @@ POSTS & CONTENT STYLES
 *********************/
 
 #content {
-	margin-top: 2.2em;
+	#inner-content {
+		border-left: $content-border;
+		border-right: $content-border;
+		background-color: white;
+	}
 }
 
 		.hentry {
@@ -842,9 +913,13 @@ COMMENT FORM STYLES
 SIDEBARS & ASIDES
 *********************/
 
-.sidebar {}
+.sidebar {
+	background-color: #eeeeee;
 
-	.widgettitle {}
+	.widgettitle {
+		margin-bottom: 2px;
+		text-transform: uppercase;
+	}
 
 	.widget {
 
@@ -866,6 +941,7 @@ SIDEBARS & ASIDES
 		}
 
 	}
+}
 
 /*********************
 FOOTER STYLES
@@ -873,7 +949,6 @@ FOOTER STYLES
 
 .footer {
 	clear: both;
-}
 
 	/*
 	if you checked out the link above:
@@ -894,6 +969,18 @@ FOOTER STYLES
 
 	} /* end .footer-links */
 
+	#inner-footer {
+		@include border-radius(0, 10px, 10px, 0);
+		border-left: $content-border;
+		border-right: $content-border;
+		border-bottom: $content-border;
+		background-color: #225663;
+	}
+	padding-bottom: 8px;
 
-	.attribution {}
+	.attribution {
+		color: #eee;
+		text-align: center;
+	}
 
+}

@@ -6,6 +6,8 @@
 <!--[if gt IE 8]><!--> <html <?php language_attributes(); ?> class="no-js"><!--<![endif]-->
 	
 	<head>
+		<link href='http://fonts.googleapis.com/css?family=Ubuntu+Mono|Droid+Sans|Sonsie+One|Asul' rel='stylesheet' type='text/css'>
+		
 		<meta charset="utf-8">
 		
 		<title><?php wp_title(''); ?></title>
@@ -41,11 +43,10 @@
 				<div id="inner-header" class="wrap clearfix">
 					
 					<!-- to use a image just replace the bloginfo('name') with your img src and remove the surrounding <p> -->
-					<p id="logo" class="h1"><a href="<?php echo home_url(); ?>" rel="nofollow"><?php bloginfo('name'); ?></a></p>
+					<p id="logo" class="h1"><a href="<?php echo home_url(); ?>"  title="<?php htmlspecialchars( bloginfo('name') . ':' . bloginfo('description') ) ?> "rel="nofollow"><?php bloginfo('name'); ?></a></p>
 					
 					<!-- if you'd like to use the site description you can un-comment it below -->
-					<?php // bloginfo('description'); ?>
-					
+					<div class="description"><?php bloginfo('description') ?></div>
 					
 					<nav role="navigation">
 						<?php bones_main_nav(); // Adjust using Menus in Wordpress Admin ?>
