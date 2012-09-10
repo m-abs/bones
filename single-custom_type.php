@@ -19,6 +19,8 @@ single-bookmarks.php
 			
 				<div id="inner-content" class="wrap clearfix">
 			
+				    <?php get_sidebar('left'); // sidebar 1 ?>
+			
 				    <div id="main" class="eightcol first clearfix" role="main">
 
 					    <?php if (have_posts()) : while (have_posts()) : the_post(); ?>
@@ -69,7 +71,7 @@ single-bookmarks.php
 			
 				    </div> <!-- end #main -->
     
-				    <?php get_sidebar(); // sidebar 1 ?>
+				    <?php get_sidebar('right'); // sidebar 2 ?>
 				    
 				</div> <!-- end #inner-content -->
     

@@ -19,6 +19,8 @@ taxonomy-shoes.php
 			
 				<div id="inner-content" class="wrap clearfix">
 			
+				    <?php get_sidebar('left'); // sidebar 1 ?>
+			
 				    <div id="main" class="eightcol first clearfix" role="main">
 				
 					    <h1 class="archive-title h2"><span><?php _e("Posts Categorized:", "bonestheme"); ?></span> <?php single_cat_title(); ?></h1>
@@ -80,7 +82,7 @@ taxonomy-shoes.php
 			
 				    </div> <!-- end #main -->
     
-				    <?php get_sidebar(); // sidebar 1 ?>
+				    <?php get_sidebar('right'); // sidebar 2 ?>
 				    
 				</div> <!-- end #inner-content -->
     

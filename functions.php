@@ -74,6 +74,7 @@ you like. Enjoy!
 
 // Sidebars & Widgetizes Areas
 function bones_register_sidebars() {
+	/*
     register_sidebar(array(
     	'id' => 'sidebar1',
     	'name' => 'Sidebar 1',
@@ -82,7 +83,25 @@ function bones_register_sidebars() {
     	'after_widget' => '</div>',
     	'before_title' => '<h4 class="widgettitle">',
     	'after_title' => '</h4>',
-    ));
+   ));
+	 */
+	register_sidebar(array(
+		'id' => 'sidebar-1',
+		'name' => 'Left Sidebar',
+		'before_widget' => '<div id="%1$s" class="widget %2$s">',
+		'after_widget' => '</div>',
+		'before_title' => '<h4 class="widgettitle">',
+		'after_title' => '</h4>',
+	));
+
+	register_sidebar(array(
+		'id' => 'sidebar-2',
+		'name' => 'Right Sidebar',
+		'before_widget' => '<div id="%1$s" class="widget %2$s">',
+		'after_widget' => '</div>',
+		'before_title' => '<h4 class="widgettitle">',
+		'after_title' => '</h4>',
+	));
     
     /* 
     to add more sidebars or widgetized areas, just copy
