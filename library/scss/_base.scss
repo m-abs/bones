@@ -411,7 +411,12 @@ PAGE NAVI STYLES
 .wp-prev-next {
 	margin: 1.1em 0 2.2em;
 }
+
+.page-navigation {
+	text-align: center;
+}
 	.bones_page_navi {
+		display: inline-block;
 
 		li {
 			float: left;
