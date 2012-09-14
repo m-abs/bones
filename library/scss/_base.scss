@@ -158,7 +158,8 @@ HEADER SYTLES
 	padding-top: 10px;
 
 	#inner-header {
-		@include border-radius(10px, 0, 0, 10px);
+		@include border-radius(10px 10px 0 0);
+		@include box-shadow(4px 4px 20px #111);
 
 		padding-top: 10px;
 		background-color: #225663;
@@ -210,7 +211,7 @@ header {
 				text-align: right;
 				background-color: $background-color;
 				li {
-					@include css-transition(background-color,550ms);
+					@include transition(background-color,550ms);
 					display: inline-block;
 					padding: 0.2em 0.5em;
 					background-color: $background-color;
@@ -310,9 +311,16 @@ POSTS & CONTENT STYLES
 
 #content {
 	#inner-content {
+		@include box-shadow(4px 4px 20px #111);
+
 		border-left: $content-border;
 		border-right: $content-border;
 		background-color: white;
+		overflow: hidden;
+
+		#main {
+			margin: 0;
+		}
 	}
 }
 
@@ -335,7 +343,15 @@ POSTS & CONTENT STYLES
 
 		/* want to style individual post classes? Booya! */
 		.post-id {}         /* post by id (i.e. post-3) */
-		.post {}            /* general post style */
+		.post {             /* general post style */
+			header {
+				&.article-header {
+					.h1, .h2, .h3, .h4 {
+						text-shadow: 2px 5px 6px;
+					}
+				}
+			}
+		}
 		.page {}            /* general article on a page style */
 		.attachment {}      /* general style on an attatchment */
 		.sticky {}          /* sticky post style */
@@ -374,15 +390,22 @@ POSTS & CONTENT STYLES
 
 				li {}
 
+				&.footnotes {
+					padding-left: 15px;
+				}
 			}
 
+
 			blockquote {
-				$blockBGcolor: #cecece;
+				/* $blockBGcolor: #cecece; */
+				$blockBGcolor: darken(#fff,1/5*100%);
 
 				border: 1px solid #000000;
 				background-color: $blockBGcolor;
 				padding: 8px;
-				@include rounded(8px);
+				@include border-radius(8px);
+
+				@include box-shadow(2px 4px 10px #000);
 
 				&:before {}
 
@@ -395,31 +418,35 @@ POSTS & CONTENT STYLES
 				}
 
 				blockquote {
-					@include rounded(4px);
+					@include border-radius(4px);
+					@include box-shadow(0px);
+
 					padding: 4px;
 					overflow: hidden;
 					text-overflow: ellipsis;
 					margin: 1em 25px;
 				}
 
+				/* Fixes sub-blockquotes */
+				$lightenFactor:5%;
 				>blockquote {
-					background-color: lighten($blockBGcolor, 4%);
+					background-color: lighten($blockBGcolor, $lightenFactor);
 					>blockquote {
-						background-color: lighten($blockBGcolor, 8%);
+						background-color: lighten($blockBGcolor, $lightenFactor*2);
 						>blockquote {
-							background-color: lighten($blockBGcolor, 12%);
+							background-color: lighten($blockBGcolor, $lightenFactor*3);
 							>blockquote {
-								background-color: lighten($blockBGcolor, 16%);
+								background-color: lighten($blockBGcolor, $lightenFactor*4);
 								>blockquote {
-									background-color: lighten($blockBGcolor, 20%);
+									background-color: lighten($blockBGcolor, $lightenFactor*5);
 									>blockquote {
-										background-color: lighten($blockBGcolor, 16%);
+										background-color: lighten($blockBGcolor, $lightenFactor*4);
 										>blockquote {
-											background-color: lighten($blockBGcolor, 12%);
+											background-color: lighten($blockBGcolor, $lightenFactor*3);
 											>blockquote {
-												background-color: lighten($blockBGcolor, 8%);
+												background-color: lighten($blockBGcolor, $lightenFactor*2);
 												>blockquote {
-													background-color: lighten($blockBGcolor, 4%);
+													background-color: lighten($blockBGcolor, $lightenFactor);
 												}
 											}
 										}
@@ -534,6 +561,11 @@ PAGE NAVI STYLES
 			float: left;
 			margin-left: 10px;
 
+			&:hover {
+				background-color: lighten($bones-blue,33%);
+				@include border-radius(4px);
+			}
+
 			a {
 				padding: 3px 6px;
 				display: block;
@@ -542,7 +574,7 @@ PAGE NAVI STYLES
 
 				&:hover,
 				&:focus {
-					color: #f01d4f;
+					color: $bones-blue;
 					text-decoration: underline;
 				}
 			}
@@ -552,7 +584,8 @@ PAGE NAVI STYLES
 		/* current page link */
 		li.bpn-current {
 			padding: 3px 6px;
-			border-bottom: 2px solid #f01d4f;
+			border-bottom: 2px solid $bones-blue;
+			background-color: transparent;
 			position: relative;
 
 			a {
@@ -567,6 +600,7 @@ PAGE NAVI STYLES
 		/* common styles for page-navi links */
 		li.bpn-prev-link,
 		li.bpn-next-link {
+			background-color: transparent;
 			font-weight: 700;
 
 			a {
@@ -580,10 +614,12 @@ PAGE NAVI STYLES
 		li.bpn-first-page-link a:hover,
 		li.bpn-last-page-link a:hover {
 			background: none;
+			background-color: transparent;
 		}
 
 		/* previous link */
 		li.bpn-prev-link {
+			background-color: transparent;
 			a {
 				&:hover,
 				&:focus {}
@@ -592,6 +628,7 @@ PAGE NAVI STYLES
 
 		/* next page link */
 		li.bpn-next-link {
+			background-color: transparent;
 			a {
 				&:hover,
 				&:focus {}
@@ -600,6 +637,7 @@ PAGE NAVI STYLES
 
 		/* first page link */
 		li.bpn-first-page-link {
+			background-color: transparent;
 			a {
 				&:hover,
 				&:focus {}
@@ -608,6 +646,7 @@ PAGE NAVI STYLES
 
 		/* last page link */
 		li.bpn-last-page-link {
+			background-color: transparent;
 			a {
 				&:hover,
 				&:focus {}
@@ -906,6 +945,8 @@ SIDEBARS & ASIDES
 
 .sidebar {
 	background-color: #eeeeee;
+	margin-bottom: -500em;
+	padding-bottom: 500em;
 
 	.widgettitle {
 		margin-bottom: 2px;
@@ -931,6 +972,14 @@ SIDEBARS & ASIDES
 
 		}
 
+	}
+
+	&#sidebar-1 {
+		margin-right: 2em;
+	}
+
+	&#sidebar-2 {
+		margin-left: 2em;
 	}
 }
 
@@ -961,7 +1010,9 @@ FOOTER STYLES
 	} /* end .footer-links */
 
 	#inner-footer {
-		@include border-radius(0, 10px, 10px, 0);
+		@include border-radius(0 0 10px 10px);
+		@include box-shadow(4px 4px 20px #111);
+
 		border-left: $content-border;
 		border-right: $content-border;
 		border-bottom: $content-border;

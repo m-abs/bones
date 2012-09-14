@@ -5,8 +5,9 @@
 				<div id="inner-content" class="wrap clearfix">
 			
 				    <?php get_sidebar('left'); // sidebar 1 ?>
+				    <?php get_sidebar('right'); // sidebar 2 ?>
 			
-					<div id="main" class="eightcol clearfix" role="main">
+					<div id="main" class="sixcol clearfix" role="main">
 				
 						<h1 class="archive-title"><span>Search Results for:</span> <?php echo esc_attr(get_search_query()); ?></h1>
 
@@ -65,8 +66,6 @@
 					    <?php endif; ?>
 			
 				    </div> <!-- end #main -->
-    			
-				    <?php get_sidebar('right'); // sidebar 2 ?>
     			
     			</div> <!-- end #inner-content -->
     

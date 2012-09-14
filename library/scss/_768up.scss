@@ -242,9 +242,14 @@ SIDEBARS & ASIDES
 	
 	/* tag-cloud widget */
 	.widget_tag_cloud {
+		text-align: justify;
 		a {
-			&:after {}
-			&:before {}
+			display: inline-block;
+			&:after {
+			}
+
+			&:before {
+			}
 		}
 	}
 	
@@ -289,10 +294,24 @@ SIDEBARS & ASIDES
 	.widget_recent_comments {}
 
 	/* search widget */
-	#searchform {}
-	.widget_search {}
-	.screen-reader-text {}
+	.widget_search {
+		#searchform {
+			.screen-reader-text {
+				display: none;
+			}
+		}
+	}
 
+@media only reader {
+	.widget_search {
+		#searchform {
+			.screen-reader-text {
+				display: block;
+			}
+		}
+	}
+}
+	
 	/* text widget */
 	.textwidget {}
 	.widget_text {}

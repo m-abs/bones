@@ -1,25 +1,56 @@
 /* Calendar */
 
 #wp-calendar {
+	$background-color: #f2f2f2;
+
 	text-align: center;
 	width: 100%;
 	caption, thead th {
 		font-weight: bold;
 		text-transform: uppercase;
-		color: #555; }
+		color: #555;
+	}
+
 	tbody td {
+		background-color: $background-color;
 		border: 1px solid #ccc;
-		background: #f2f2f2;
+		cursor: default;
+		@include transition(background-color,400ms,ease-in);
+		@include border-radius(2px);
+		@include box-sizing(border-box);
+
+		&:hover {
+			background-color: lighten($background-color,20%);
+		}
+
 		a {
-			font-weight: bold; } }
-	td#today {
-		background: #e4e4e4; }
-	tbody td {
+			font-weight: bold;
+			cursor: pointer;
+			display: block;
+		}
+
+		&#today {
+			/*background-color: #e4e4e4;*/
+			background-color: darken($background-color,20%);
+		}
+
 		&.pad {
 			border: none;
-			background: transparent; }
-		-moz-border-radius: 2px;
-		-webkit-border-radius: 2px;
-		border-radius: 2px; } }
+			background: transparent;
+		}
+	}
+
+	tfoot {
+		tr {
+			border: none;
+			border-color: transparent;
+			td {
+				border: none;
+				border-color: transparent;
+				background: transparent;
+			}
+		}
+	}
+}
 
 /* Calendar ends */

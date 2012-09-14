@@ -5,6 +5,7 @@
 				<div id="inner-content" class="wrap clearfix">
     
 				    <?php get_sidebar('left'); // sidebar 1 ?>
+				    <?php get_sidebar('right'); // sidebar 2 ?>
 			
 				    <div id="main" class="sixcol clearfix" role="main">
 
@@ -66,8 +67,6 @@
 					    <?php endif; ?>
 			
 				    </div> <!-- end #main -->
-
-				    <?php get_sidebar('right'); // sidebar 2 ?>
 				    
 				</div> <!-- end #inner-content -->
     
