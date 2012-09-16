@@ -11,7 +11,7 @@ and will be used across all viewports.
 
 ******************************************************************/
 
-$content-border: 1px solid black;
+$content-border: 1px solid #AAA;
 
 /*********************
 GENERAL STYLES
@@ -159,7 +159,7 @@ HEADER SYTLES
 
 	#inner-header {
 		@include border-radius(10px 10px 0 0);
-		@include box-shadow(4px 4px 20px #111);
+		@include box-shadow(4px 4px 10px #111);
 
 		padding-top: 10px;
 		background-color: #225663;
@@ -311,7 +311,7 @@ POSTS & CONTENT STYLES
 
 #content {
 	#inner-content {
-		@include box-shadow(4px 4px 20px #111);
+		@include box-shadow(4px 4px 10px #111);
 
 		border-left: $content-border;
 		border-right: $content-border;
@@ -1011,7 +1011,7 @@ FOOTER STYLES
 
 	#inner-footer {
 		@include border-radius(0 0 10px 10px);
-		@include box-shadow(4px 4px 20px #111);
+		@include box-shadow(4px 4px 10px #111);
 
 		border-left: $content-border;
 		border-right: $content-border;

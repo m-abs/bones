@@ -6,7 +6,7 @@
 <!--[if gt IE 8]><!--> <html <?php language_attributes(); ?> class="no-js"><!--<![endif]-->
 	
 	<head>
-		<link href='http://fonts.googleapis.com/css?family=Ubuntu+Mono|Droid+Sans|Sonsie+One|Asul' rel='stylesheet' type='text/css'>
+		<link href='http://fonts.googleapis.com/css?family=Sonsie+One|Asul' rel='stylesheet' type='text/css'>
 		
 		<meta charset="utf-8">
 		
