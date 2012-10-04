@@ -109,9 +109,9 @@ H1, H2, H3, H4, H5 STYLES
 ******************************************************************/
 
 h1, .h1, h2, .h2, h3, .h3, h4, .h4, h5, .h5 {
-	font-family: sans-serif;
+	font-family: Asul, sans-serif;
 	text-rendering: optimizelegibility;
-	font-weight: 500;
+	font-weight: 400;
 	/*
 	if you're going to use webfonts, be sure to check your weights
 	http://css-tricks.com/watch-your-font-weight/
@@ -321,8 +321,6 @@ POSTS & CONTENT STYLES
 		#main {
 			margin: 0;
 		}
-	}
-}
 
 		.hentry {
 
@@ -346,8 +344,14 @@ POSTS & CONTENT STYLES
 		.post {             /* general post style */
 			header {
 				&.article-header {
-					.h1, .h2, .h3, .h4 {
-						text-shadow: 2px 5px 6px;
+					h1, h2, h3, h4, .h1, .h2, .h3, .h4 {
+						font-weight: 700;
+						@include transition( text-shadow 150ms linear );
+
+						text-shadow: 2px 3px 10px rgba( 0, 0, 0, 0.5 );
+						&:hover {
+							text-shadow: 2px 3px 10px rgba( 0, 0, 0, 1 );
+						}
 					}
 				}
 			}
@@ -541,6 +545,8 @@ POSTS & CONTENT STYLES
 		.size-large {}
 		.size-medium {}
 		.size-thumbnail {}
+	}
+}
 
 /******************************************************************
 PAGE NAVI STYLES

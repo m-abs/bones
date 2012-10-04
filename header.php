@@ -6,7 +6,7 @@
 <!--[if gt IE 8]><!--> <html <?php language_attributes(); ?> class="no-js"><!--<![endif]-->
 	
 	<head>
-		<link href='http://fonts.googleapis.com/css?family=Sonsie+One|Asul' rel='stylesheet' type='text/css'>
+		<link href='http://fonts.googleapis.com/css?family=Sonsie+One|Asul:400,700' rel='stylesheet' type='text/css'>
 		
 		<meta charset="utf-8">
 		
@@ -43,7 +43,7 @@
 				<div id="inner-header" class="wrap clearfix">
 					
 					<!-- to use a image just replace the bloginfo('name') with your img src and remove the surrounding <p> -->
-					<p id="logo" class="h1"><a href="<?php echo home_url(); ?>"  title="<?php htmlspecialchars( bloginfo('name') . ':' . bloginfo('description') ) ?> "rel="nofollow"><?php bloginfo('name'); ?></a></p>
+					<p id="logo" class="h1"><a href="<?php echo home_url(); ?>"  title="<?php bloginfo('name'); echo ' - '; bloginfo('description') ?>" rel="nofollow"><?php bloginfo('name'); ?></a></p>
 					
 					<!-- if you'd like to use the site description you can un-comment it below -->
 					<div class="description"><?php bloginfo('description') ?></div>
