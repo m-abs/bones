@@ -468,11 +468,25 @@ strong,
 dfn,
 em,
 .em {
-  font-style: italic; }
-
-small, .small {
-  font-size: 75%; }
-
+  font-style: italic;
+}
+small,
+.small {
+  font-size: 75%;
+}
+ul,
+ol {
+  padding: 0;
+  list-style-type: none;
+}
+dd {
+  margin: 0;
+}
+.sidebar ul,
+.sidebar ol,
+.commentlist {
+  list-style: none;
+}
 /******************************************************************
 Site Name: 
 Author: 
@@ -612,9 +626,8 @@ really slow down your CSS. Don't overdo it.
 /*********************
 BOX SIZING
 *********************/
-/* @include box-sizing(border-box); */
-/* NOTE: value of "padding-box" is only supported in Gecko. So 
-probably best not to use it. I mean, were you going to anyway? */
+/* .boxShadow(0,0,4px,0,#444); */
+/* .boxShadow(none); */
 /*********************
 BUTTONS
 *********************/
@@ -751,13 +764,29 @@ loaded by mobile devices. You want to keep it as minimal as
 possible. This is called at the top of the main stylsheet
 and will be used across all viewports.
 
+------------ MAP ------------
+
+01. GENERAL STYLES
+02. WORDPRESS BODY CLASSES
+03. LAYOUT & GRID STYLES
+04. LINK STYLES
+05. H1, H2, H3, H4, H5 STYLES
+06. HEADER SYTLES
+07. NAVIGATION STYLES
+08. POSTS & CONTENT STYLES
+09. PAGE NAVI STYLES
+10. COMMENT STYLES
+11. COMMENT FORM STYLES
+12. SIDEBARS & ASIDES
+13. FOOTER STYLES
+
 ******************************************************************/
 /*********************
-GENERAL STYLES
+01. GENERAL STYLES
 *********************/
 body {
-  font-family: Georgia, serif;
-  font-size: 10pt;
+  font-family: "Georgia", Cambria, Times New Roman, Times, serif;
+  font-size: 100%;
   line-height: 1.5;
   color: #565656;
   background-color: #7a787a;
@@ -768,8 +797,8 @@ body {
   background-image: linear-gradient(to bottom, #e8e8e8, #7a787a); }
 
 /********************
-WORDPRESS BODY CLASSES
-style a page via class
+02. WORDPRESS BODY CLASSES
+    style a page via class
 ********************/
 /* for sites that are read right to left (i.e. hebrew) */
 /* home page */
@@ -807,7 +836,7 @@ style a page via class
 /* paged items like search results or archives */
 /* individual paged (i.e. body.paged-3) */
 /*********************
-LAYOUT & GRID STYLES
+03. LAYOUT & GRID STYLES
 *********************/
 .wrap {
   width: 90%;
@@ -822,7 +851,7 @@ small screen, so let's only bring it in
 when we're ready for it.
 */
 /*********************
-LINK STYLES
+04. LINK STYLES
 *********************/
 a, a:visited {
   color: #225588;
@@ -841,7 +870,7 @@ a, a:visited {
     -webkit-tap-highlight-color: rgba(0, 0, 0, 0); }
 
 /******************************************************************
-H1, H2, H3, H4, H5 STYLES
+05. H1, H2, H3, H4, H5 STYLES
 ******************************************************************/
 h1, .h1, h2, .h2, h3, .h3, h4, .h4, h5, .h5 {
   font-family: sans-serif;
@@ -878,7 +907,7 @@ h5, .h5 {
   letter-spacing: 2px; }
 
 /*********************
-HEADER SYTLES
+06. HEADER SYTLES
 *********************/
 .header {
   padding-top: 10px; }
@@ -918,14 +947,14 @@ HEADER SYTLES
       font-family: Asul, sans-serif; }
 
 /*********************
-NAVIGATION STYLES
+07. NAVIGATION STYLES
 *********************/
 /*
 all navs have a .nav class applied via
-the wp_menu function, this is so we can
-easily just write on group of styles for
-the navs on the site and our css is cleaner
-and moe scalable.
+the wp_menu function; this is so we can
+easily write one group of styles for
+the navs on the site so our css is cleaner
+and more scalable.
 */
 header nav[role=navigation] .menu ul {
   text-align: right;
@@ -981,7 +1010,7 @@ header nav[role=navigation] .menu ul {
 
 /* end .nav */
 /*********************
-POSTS & CONTENT STYLES
+08. POSTS & CONTENT STYLES
 *********************/
 #content #inner-content {
   border-left: 1px solid black;
@@ -1100,7 +1129,7 @@ POSTS & CONTENT STYLES
 /* end .gallery */
 /* gallery caption styles */
 /******************************************************************
-PAGE NAVI STYLES
+09. PAGE NAVI STYLES
 ******************************************************************/
 .page-navigation,
 .wp-prev-next {
@@ -1173,7 +1202,7 @@ PAGE NAVI STYLES
 
 /* end .wp-prev-next */
 /******************************************************************
-COMMENT STYLES
+10. COMMENT STYLES
 ******************************************************************/
 /* h3 comment title */
 #comments {
@@ -1255,7 +1284,7 @@ COMMENT STYLES
 
 /* end .commentlist */
 /******************************************************************
-COMMENT FORM STYLES
+11. COMMENT FORM STYLES
 ******************************************************************/
 .respond-form {
   margin: 1.5em 10px;
@@ -1320,7 +1349,7 @@ COMMENT FORM STYLES
   margin: 0 20px 1.1em; }
 
 /*********************
-SIDEBARS & ASIDES
+12. SIDEBARS & ASIDES
 *********************/
 .sidebar {
   background-color: #eeeeee;
@@ -1337,7 +1366,7 @@ SIDEBARS & ASIDES
     margin-left: 2em; }
 
 /*********************
-FOOTER STYLES
+13. FOOTER STYLES
 *********************/
 .footer {
   clear: both;
@@ -1459,6 +1488,97 @@ you can add resource intensive styles.
   /******************************************************************
   Site Name: 
   Author: 
+  
+  Stylesheet: Grid Stylesheet
+  
+  I've seperated the grid so you can swap it out easily. It's
+  called at the top the style.less stylesheet.
+  
+  There are a ton of grid solutions out there. You should definitely
+  experiment with your own. Here are some recommendations:
+  
+  http://gridsetapp.com - Love this site. Responsive Grids made easy.
+  http://gridpak.com/ - Create your own responsive grid.
+  
+  The grid below is a combination of the 1140 grid and Twitter Boostrap. 
+  I liked 1140 but Boostrap's grid was way more detailed so I merged them 
+  together, let's see how this works out. If you want to use 1140, the original 
+  values are commented out on each line.
+  
+  ******************************************************************/
+  .onecol {
+    width: 5.801104972%;
+  }
+  /* 4.85%;  } /* grid_1  */
+  .twocol {
+    width: 14.364640883%;
+  }
+  /* 13.45%; } /* grid_2  */
+  .threecol {
+    width: 22.928176794%;
+  }
+  /* 22.05%; } /* grid_3  */
+  .fourcol {
+    width: 31.491712705%;
+  }
+  /* 30.75%; } /* grid_4  */
+  .fivecol {
+    width: 40.055248616%;
+  }
+  /* 39.45%; } /* grid_5  */
+  .sixcol {
+    width: 48.618784527%;
+  }
+  /* 48%;    } /* grid_6  */
+  .sevencol {
+    width: 57.182320438000005%;
+  }
+  /* 56.75%; } /* grid_7  */
+  .eightcol {
+    width: 65.74585634900001%;
+  }
+  /* 65.4%;  } /* grid_8  */
+  .ninecol {
+    width: 74.30939226%;
+  }
+  /* 74.05%; } /* grid_9  */
+  .tencol {
+    width: 82.87292817100001%;
+  }
+  /* 82.7%;  } /* grid_10 */
+  .elevencol {
+    width: 91.436464082%;
+  }
+  /* 91.35%; } /* grid_11 */
+  .twelvecol {
+    width: 99.999999993%;
+  }
+  /* 100%;   } /* grid_12 */
+  .onecol,
+  .twocol,
+  .threecol,
+  .fourcol,
+  .fivecol,
+  .sixcol,
+  .sevencol,
+  .eightcol,
+  .ninecol,
+  .tencol,
+  .elevencol,
+  .twelvecol {
+    position: relative;
+    float: left;
+    margin-left: 2.762430939%;
+  }
+  .first {
+    margin-left: 0;
+  }
+  .last {
+    float: right;
+  }
+  /******************************************************************
+  Site Name:
+  Author:
   
   Stylesheet: Tablet & Small Desktop Stylesheet
   
@@ -1592,52 +1712,66 @@ you can add resource intensive styles.
     border: 0;
     /* end .menu ul li */
     /* highlight current page */
-    /* end current highlighters */ }
-    .nav li {
-      float: left;
-      position: relative;
-      /*
-      plan your menus and drop-downs wisely.
-      */
-      /* showing sub-menus */ }
-      .nav li a {
-        border-bottom: 0;
-        /*
-        you can use hover styles here even though this size
-        has the possibility of being a mobile device.
-        */ }
-        .nav li a:hover, .nav li a:focus {
-          background-color: #dedede; }
-      .nav li ul.sub-menu,
-      .nav li ul.children {
-        width: 200px;
-        border: 1px solid #ccc;
-        border-top: 0;
-        position: absolute;
-        display: none;
-        z-index: 8999;
-        /* highlight sub-menu current page */ }
-        .nav li ul.sub-menu li,
-        .nav li ul.children li {
-          /*
-          if you need to go deeper, go nuts
-          just remember deeper menus suck
-          for usability. k, bai.
-          */ }
-          .nav li ul.sub-menu li a,
-          .nav li ul.children li a {
-            padding-left: 10px;
-            border-right: 0;
-            display: block;
-            width: 180px;
-            border-bottom: 1px solid #ccc; }
-          .nav li ul.sub-menu li:last-child a,
-          .nav li ul.children li:last-child a {
-            border-bottom: 0; }
-      .nav li:hover ul {
-        top: auto;
-        display: block; }
-
+  
+  }
+  .nav li {
+    float: left;
+    position: relative;
+    /*
+  		plan your menus and drop-downs wisely.
+  		*/
+  
+    /* showing sub-menus */
+  
+  }
+  .nav li a {
+    border-bottom: 0;
+    /*
+  			you can use hover styles here even though this size
+  			has the possibility of being a mobile device.
+  			*/
+  
+  }
+  .nav li a:hover,
+  .nav li a:focus {
+    background-color: #dedede;
+  }
+  .nav li ul.sub-menu,
+  .nav li ul.children {
+    margin-top: 0;
+    border: 1px solid #ccc;
+    border-top: 0;
+    position: absolute;
+    display: none;
+    z-index: 8999;
+    /* highlight sub-menu current page */
+  
+  }
+  .nav li ul.sub-menu li,
+  .nav li ul.children li {
+    /*
+  				if you need to go deeper, go nuts
+  				just remember deeper menus suck
+  				for usability. k, bai.
+  				*/
+  
+  }
+  .nav li ul.sub-menu li a,
+  .nav li ul.children li a {
+    padding-left: 10px;
+    border-right: 0;
+    display: block;
+    width: 180px;
+    border-bottom: 1px solid #ccc;
+  }
+  .nav li ul.sub-menu li:last-child a,
+  .nav li ul.children li:last-child a {
+    border-bottom: 0;
+  }
+  .nav li:hover ul {
+    top: auto;
+    display: block;
+  }
   /* end .nav */
   /*********************
   SIDEBARS & ASIDES
