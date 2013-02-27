@@ -16,7 +16,7 @@
 		border: 1px solid #ccc;
 		cursor: default;
 		@include transition(background-color,400ms,ease-in);
-		@include border-radius(2px);
+		border-radius: 2px;
 		@include box-sizing(border-box);
 
 		&:hover {
