@@ -6,14 +6,11 @@
 <!--[if gt IE 8]><!--> <html <?php language_attributes(); ?> class="no-js"><!--<![endif]-->
 
 	<head>
-		<link href='http://fonts.googleapis.com/css?family=Sonsie+One|Asul:400,700' rel='stylesheet' type='text/css'>
+		<link href='http<?= !empty( $_SERVER[ "HTTPS" ] ) ? "s" : ""  ?>://fonts.googleapis.com/css?family=Sonsie+One|Asul:400,700' rel='stylesheet' type='text/css'>
 		
 		<meta charset="utf-8">
 
 		<title><?php wp_title(''); ?></title>
-
-		<!-- Google Chrome Frame for IE -->
-		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
 
 		<!-- mobile meta (hooray!) -->
 		<meta name="HandheldFriendly" content="True">
@@ -27,9 +24,10 @@
 			<link rel="shortcut icon" href="<?php echo get_template_directory_uri(); ?>/favicon.ico">
 		<![endif]-->
 		<!-- or, set /favicon.ico for IE10 win -->
+<!--
 		<meta name="msapplication-TileColor" content="#f01d4f">
 		<meta name="msapplication-TileImage" content="<?php echo get_template_directory_uri(); ?>/library/images/win8-tile-icon.png">
-
+-->
   	<link rel="pingback" href="<?php bloginfo('pingback_url'); ?>">
 
 		<!-- wordpress head functions -->
