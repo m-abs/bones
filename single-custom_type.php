@@ -19,6 +19,7 @@ single-bookmarks.php
 
 				<div id="inner-content" class="wrap clearfix">
 
+					<div id="main-wrapper">
 						<div id="main" class="sixcol clearfix" role="main">
 
 							<?php if (have_posts()) : while (have_posts()) : the_post(); ?>
@@ -68,6 +69,7 @@ single-bookmarks.php
 							<?php endif; ?>
 
 						</div> <!-- end #main -->
+					</div> <!-- end #main-wrapper -->
 
 						<?php get_sidebar(); ?>
 

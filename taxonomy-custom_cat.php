@@ -19,6 +19,7 @@ taxonomy-shoes.php
 
 				<div id="inner-content" class="wrap clearfix">
 
+					<div id="main-wrapper">
 						<div id="main" class="sixcol clearfix" role="main">
 
 							<h1 class="archive-title h2"><span><?php _e( 'Posts Categorized:', 'bonestheme' ); ?></span> <?php single_cat_title(); ?></h1>
@@ -77,6 +78,7 @@ taxonomy-shoes.php
 							<?php endif; ?>
 
 						</div> <!-- end #main -->
+					</div> <!-- end #main-wrapper -->
 
 						<?php get_sidebar(); ?>
 

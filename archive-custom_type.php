@@ -4,6 +4,7 @@
 
 				<div id="inner-content" class="wrap clearfix">
 
+					<div id="main-wrapper">
 						<div id="main" class="sixcol clearfix" role="main">
 
 						<h1 class="archive-title h2"><?php post_type_archive_title(); ?></h1>
@@ -63,6 +64,7 @@
 							<?php endif; ?>
 
 						</div> <!-- end #main -->
+					</div> <!-- end #main-wrapper -->
 
 						<?php get_sidebar(); ?>
 

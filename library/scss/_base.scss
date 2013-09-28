@@ -246,7 +246,6 @@ header {
 }
 
 .nav {
-	border: 1px solid #ccc;
 	border-bottom: 0;
 
 	li {
@@ -255,8 +254,6 @@ header {
 			display: block;
 			text-decoration: none;
 			padding: 10px 10px;
-			background-color: #eee;
-			border-bottom: 1px solid #ccc;
 
 			/*
 			remember this is for mobile ONLY, so there's no need
@@ -322,7 +319,6 @@ POSTS & CONTENT STYLES
 *********************/
 
 #content {
-	margin-top: 2.2em;
 	#inner-content {
 		box-shadow: 4px 4px 10px #111;
 
@@ -898,11 +894,9 @@ SIDEBARS & ASIDES
 *********************/
 
 .sidebar {
-	background-color: #eeeeee;
-	margin-bottom: -500em;
-	padding-bottom: 500em;
-	max-width: 360px;
-	min-width: 250px;
+	background-color: #eee;
+	float: none;
+	margin: 0;
 
 	.widgettitle {
 		margin-bottom: 2px;
@@ -930,15 +924,6 @@ SIDEBARS & ASIDES
 
 	}
 
-	&#sidebar-1 {
-		margin-right: 2em;
-		float: left;
-	}
-
-	&#sidebar-2 {
-		margin-left: 2em;
-		float: right;
-	}
 }
 
 /*********************
