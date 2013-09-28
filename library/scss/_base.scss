@@ -19,7 +19,7 @@ GENERAL STYLES
 
 body {
 	font-family: $serif;
-	font-size: 10pt;
+	font-size: 100%;
 	line-height: 1.5;
 	color: #565656;
 
@@ -109,9 +109,9 @@ H1, H2, H3, H4, H5 STYLES
 ******************************************************************/
 
 h1, .h1, h2, .h2, h3, .h3, h4, .h4, h5, .h5 {
-	font-family: Asul, sans-serif;
+	font-family: $sans-serif;
 	text-rendering: optimizelegibility;
-	font-weight: 400;
+	font-weight: 500;
 	/*
 	if you're going to use webfonts, be sure to check your weights
 	http://css-tricks.com/watch-your-font-weight/
@@ -255,6 +255,7 @@ header {
 			display: block;
 			text-decoration: none;
 			padding: 10px 10px;
+			background-color: #eee;
 			border-bottom: 1px solid #ccc;
 
 			/*
@@ -302,16 +303,16 @@ header {
 
 		}
 
-		/* highlight current page */
-		&.current-menu-item,
-		&.current_page_item,
-		&.current-page-ancestor {
+	} /* end .menu li */
 
-			a {}
+	/* highlight current page */
+	li.current-menu-item,
+	li.current_page_item,
+	li.current-page-ancestor {
 
-		}  /* end current highlighters */
+		a {}
 
-	} /* end .nav li */
+	}  /* end current highlighters */
 
 } /* end .nav */
 
@@ -321,6 +322,7 @@ POSTS & CONTENT STYLES
 *********************/
 
 #content {
+	margin-top: 2.2em;
 	#inner-content {
 		box-shadow: 4px 4px 10px #111;
 
@@ -409,6 +411,7 @@ POSTS & CONTENT STYLES
 					clear: both;
 					padding-left: 15px;
 				}
+
 			}
 
 
@@ -516,11 +519,13 @@ POSTS & CONTENT STYLES
 		} /* end .entry-content */
 
 		.wp-caption {
+			max-width: 100%;
 			background: #eee;
 			padding: 5px;
 
 			/* images inside wp-caption */
 			img {
+				max-width: 100%;
 				margin-bottom: 0;
 				width: 100%;
 			}
@@ -564,114 +569,45 @@ POSTS & CONTENT STYLES
 PAGE NAVI STYLES
 ******************************************************************/
 
-.page-navigation,
+.pagination,
 .wp-prev-next {
 	margin: 1.1em 0 2.2em;
 }
-
-.page-navigation {
-	text-align: center;
-}
-	.bones_page_navi {
-		display: inline-block;
-
-		li {
-			float: left;
-			margin-left: 10px;
-
-			&:hover {
-				background-color: lighten($bones-blue,33%);
-				border-radius: 4px;
-			}
-
-			a {
-				padding: 3px 6px;
-				display: block;
-				text-decoration: none;
-				position: relative;
-
-				&:hover,
-				&:focus {
-					color: $bones-blue;
-					text-decoration: underline;
-				}
-			}
-
-		}
-
-		/* current page link */
-		li.bpn-current {
-			padding: 3px 6px;
-			border-bottom: 2px solid $bones-blue;
-			background-color: transparent;
-			position: relative;
-
-			a {
-				/* hovering on current page link */
-				&:hover,
-				&:focus {}
-
-			}
-
-		} /* end .bones_page_navi .bpn-current */
-
-		/* common styles for page-navi links */
-		li.bpn-prev-link,
-		li.bpn-next-link {
-			background-color: transparent;
-			font-weight: 700;
-
-			a {
-				padding: 0;
-			}
-		}
-
-		/* remove the bg on end links */
-		li.bpn-prev-link a:hover,
-		li.bpn-next-link a:hover,
-		li.bpn-first-page-link a:hover,
-		li.bpn-last-page-link a:hover {
-			background: none;
-			background-color: transparent;
-		}
-
-		/* previous link */
-		li.bpn-prev-link {
-			background-color: transparent;
-			a {
-				&:hover,
-				&:focus {}
-			}
-		}
-
-		/* next page link */
-		li.bpn-next-link {
-			background-color: transparent;
-			a {
-				&:hover,
-				&:focus {}
-			}
-		}
-
-		/* first page link */
-		li.bpn-first-page-link {
-			background-color: transparent;
-			a {
-				&:hover,
-				&:focus {}
-			}
-		}
-
-		/* last page link */
-		li.bpn-last-page-link {
-			background-color: transparent;
-			a {
-				&:hover,
-				&:focus {}
-			}
-		}
-
-	} /* end .bones_page_navi */
+	.pagination{
+        text-align: center;
+        ul {
+            display: inline-block;
+            white-space: nowrap;
+            padding:0;
+            clear: both;
+            margin: 1px;
+            li {
+                padding: 0;
+                margin: 0;
+                float: left;
+                display: inline;
+                overflow: hidden;
+                a, span {
+                    margin: 0;
+                    text-decoration: none;
+                    padding: 0;
+                    line-height: 1em;
+                    font-size: 1em;
+                    font-weight: normal;
+                    padding: .5em;
+                    min-width: 1em;
+                    display: block;
+                }
+                span.current{
+                	font-weight: bold;
+                }
+                a:hover, a:focus {
+                	color: $bones-blue;
+                	ctext-decoration: underline;
+                }
+            }
+        }
+    } /* end .bones_page_navi */
 
 	/* fallback previous & next links */
 	.wp-prev-next {
