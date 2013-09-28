@@ -7,8 +7,11 @@
 
 	<head>
 		<link href='http<?= !empty( $_SERVER[ "HTTPS" ] ) ? "s" : ""  ?>://fonts.googleapis.com/css?family=Sonsie+One|Asul:400,700' rel='stylesheet' type='text/css'>
-		
+
 		<meta charset="utf-8">
+
+		<!-- Google Chrome Frame for IE -->
+		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
 
 		<title><?php wp_title(''); ?></title>
 
@@ -28,7 +31,7 @@
 		<meta name="msapplication-TileColor" content="#f01d4f">
 		<meta name="msapplication-TileImage" content="<?php echo get_template_directory_uri(); ?>/library/images/win8-tile-icon.png">
 -->
-  	<link rel="pingback" href="<?php bloginfo('pingback_url'); ?>">
+		<link rel="pingback" href="<?php bloginfo('pingback_url'); ?>">
 
 		<!-- wordpress head functions -->
 		<?php wp_head(); ?>
@@ -48,11 +51,12 @@
 				<div id="inner-header" class="wrap clearfix">
 
 					<!-- to use a image just replace the bloginfo('name') with your img src and remove the surrounding <p> -->
-					<p id="logo" class="h1"><a href="<?php echo home_url(); ?>"  title="<?php bloginfo('name'); echo ' - '; bloginfo('description') ?>" rel="nofollow"><?php bloginfo('name'); ?></a></p>
-					
+					<p id="logo" class="h1"><a href="<?php echo home_url(); ?>" rel="nofollow"><?php bloginfo('name'); ?></a></p>
+
 					<!-- if you'd like to use the site description you can un-comment it below -->
 					<div class="description"><?php bloginfo('description') ?></div>
-					
+
+
 					<nav role="navigation">
 						<?php bones_main_nav(); ?>
 					</nav>
