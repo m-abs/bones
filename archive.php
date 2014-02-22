@@ -53,7 +53,7 @@
 										printf(__( 'Posted <time class="updated" datetime="%1$s" pubdate>%2$s</time> by <span class="author">%3$s</span> <span class="amp">&</span> filed under %4$s.', 'bonestheme' ), get_the_time('Y-m-j'), get_the_time(__( 'F jS, Y', 'bonestheme' )), bones_get_the_author_posts_link(), get_the_category_list(', '));
 									?></p>
 
-								</header> <!-- end article header -->
+								</header>
 
 								<section class="entry-content clearfix">
 
@@ -61,13 +61,13 @@
 
 									<?php the_excerpt(); ?>
 
-								</section> <!-- end article section -->
+								</section>
 
 								<footer class="article-footer">
 
-								</footer> <!-- end article footer -->
+								</footer>
 
-							</article> <!-- end article -->
+							</article>
 
 							<?php endwhile; ?>
 
@@ -103,8 +103,8 @@
 
 						<?php get_sidebar(); ?>
 
-								</div> <!-- end #inner-content -->
+								</div>
 
-			</div> <!-- end #content -->
+			</div>
 
 <?php get_footer(); ?>

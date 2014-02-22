@@ -41,7 +41,9 @@ NAVIGATION STYLES
 
 .nav {
 	border: 0;
-
+	ul {
+		margin-top:0;
+	}
 	li {
 		float: left;
 		position: relative;
@@ -70,7 +72,8 @@ NAVIGATION STYLES
 			border: 1px solid #ccc;
 			border-top: 0;
 			position: absolute;
-			display: none;
+			overflow: hidden;
+			visibility: hidden;
 			z-index: 8999;
 
 			li {
@@ -116,7 +119,8 @@ NAVIGATION STYLES
 		/* showing sub-menus */
 		&:hover ul {
 			top: auto;
-			display: block;
+			overflow: visible;
+			visibility:visible;
 		}
 
 	} /* end .menu ul li */
