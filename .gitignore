@@ -54,3 +54,4 @@ temp/
 
 .svn
 .sass-cache
+library/css/*

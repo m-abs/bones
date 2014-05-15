@@ -397,6 +397,29 @@ POSTS & CONTENT STYLES
 
 				li {}
 
+				&.competence-list {
+					li {
+						.col {
+							display: inline-block;
+							width: 22.928176794%;
+							margin-right: 0;
+							padding: 0 0.3em;
+						}
+
+						&.header {
+							font-weight: bold;
+						}
+						&:not(.header) {
+							&:nth-child(even) {
+								background-color: #eee;
+							}
+
+							&:hover {
+								background-color: #cecece;
+							}
+						}
+					}
+				}
 			}
 
 			ol {
