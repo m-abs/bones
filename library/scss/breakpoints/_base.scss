@@ -22,6 +22,7 @@ body {
 	color: $text-color;
 	background-color: $gray;
   -webkit-font-smoothing: antialiased;
+	@include css-gradient(#e8e8e8, #7a787a);
 }
 
 /********************
@@ -70,7 +71,7 @@ LAYOUT & GRID STYLES
 *********************/
 
 .wrap {
-	width: 96%;
+	width: 100%;
 	margin: 0 auto;
 }
 
@@ -107,8 +108,9 @@ H1, H2, H3, H4, H5 STYLES
 ******************************************************************/
 
 h1, .h1, h2, .h2, h3, .h3, h4, .h4, h5, .h5 {
+	font-family: Asul, sans-serif;
 	text-rendering: optimizelegibility;
-	font-weight: 500;
+	font-weight: 400;
 	/*
 	if you're going to use webfonts, be sure to check your weights
 	http://css-tricks.com/watch-your-font-weight/
@@ -152,8 +154,7 @@ HEADER STYLES
 *********************/
 
 .header {
-	background-color: $black;
-}
+	background-color: $bar-bgcolor-page;
 
 	#logo {
 		margin: 0.75em 0;
@@ -162,6 +163,32 @@ HEADER STYLES
 			color: $white;
 		}
 	}
+
+	#inner-header {
+		box-shadow: 4px 4px 10px #111;
+
+		background-color: $bar-bgcolor;
+
+		#logo {
+			padding-left: 20px;
+	
+			margin-top: 0px;
+			margin-bottom: 0px;
+			color: $logo-color;
+			a {
+				font-family: 'Sonsie One', cursive;
+				color: $logo-color;
+			}
+			text-shadow: #000000 5px 1px 6px;
+		}
+	
+		.description {
+			padding-left: 20px;
+			color: #efffe6;
+			font-family: Asul, sans-serif;
+		}
+	}
+}
 
 /*********************
 NAVIGATION STYLES
@@ -174,6 +201,49 @@ easily write one group of styles for
 the navs on the site so our css is cleaner
 and more scalable.
 */
+
+header {
+	nav[role=navigation] {
+		height: 2.5em;
+		line-height: 2.5em;
+		.menu, .nav {
+			ul {
+				height: 2.5em;
+				line-height: 2.5em;
+				margin: 0;
+				float: right;
+				$background-color: #27567a;
+
+				text-align: right;
+				background-color: $background-color;
+				li {
+					height: 2.5em;
+					line-height: 2.5em;
+
+					@include transition(background-color,550ms);
+					display: inline-block;
+					/*padding: 0.2em 0.5em;*/
+					background-color: $background-color;
+					&:hover {
+						background-color: lighten($background-color,15%);
+					}
+
+					a {
+						&:hover {
+							background-color: transparent;
+						}
+						color: #c6c8c9;
+						font-size: 1.2em;
+						font-family: Asul, sans-serif;
+						font-weight: bold;
+						padding: 4px 20px;
+						height: 15px;
+					}
+				}
+			}
+		}
+	}
+}
 
 .nav {
 	border-bottom: 0;
@@ -232,16 +302,14 @@ and more scalable.
 
 		}
 
-	} /* end .menu li */
+		/* highlight current page */
+		&.current-menu-item,
+		&.current_page_item,
+		&.current-page-ancestor {
 
-	/* highlight current page */
-	li.current-menu-item,
-	li.current_page_item,
-	li.current_page_ancestor {
+		}  /* end current highlighters */
 
-		a {}
-
-	}  /* end current highlighters */
+	} /* end .nav li */
 
 } /* end .nav */
 
@@ -251,8 +319,20 @@ POSTS & CONTENT STYLES
 *********************/
 
 #content {
-	margin-top: 1.5em;
-}
+	#inner-content {
+		box-shadow: 4px 4px 10px #111;
+
+		border-left: $content-border;
+		border-right: $content-border;
+		background-color: white;
+		overflow: hidden;
+
+		#main-wrapper {
+			#main {
+				margin: 0;
+				float: none;
+			}
+		}
 
 		.hentry {
 			background-color: $white;
@@ -262,7 +342,7 @@ POSTS & CONTENT STYLES
 
 			header {
 				border-bottom: 1px solid $light-gray;
-				padding: 1.5em;
+				padding: 1.5em 1.5em 0.5em;
 			}
 
 			footer {
@@ -286,13 +366,29 @@ POSTS & CONTENT STYLES
 
 		.page-title {}
 
-		.entry-title {}
+		.entry-title {
+			color: $link-color;
+		}
 
 		.archive-title {}
 
 		/* want to style individual post classes? Booya! */
 		.post-id {}         /* post by id (i.e. post-3) */
-		.post {}            /* general post style */
+		.post {             /* general post style */
+			header {
+				&.article-header {
+					h1, h2, h3, h4, .h1, .h2, .h3, .h4 {
+						font-weight: 700;
+						@include transition( text-shadow 150ms linear );
+
+						text-shadow: 2px 3px 10px rgba( 0, 0, 0, 0.5 );
+						&:hover {
+							text-shadow: 2px 3px 10px rgba( 0, 0, 0, 1 );
+						}
+					}
+				}
+			}
+		}
 		.page {}            /* general article on a page style */
 		.attachment {}      /* general style on an attatchment */
 		.sticky {}          /* sticky post style */
@@ -336,6 +432,10 @@ POSTS & CONTENT STYLES
 
 				li {}
 
+				&.footnotes {
+					clear: both;
+					padding-left: 15px;
+				}
 			}
 
 			table {
@@ -380,6 +480,12 @@ POSTS & CONTENT STYLES
 			}
 
 			blockquote {
+				/* $blockBGcolor: #cecece; */
+				$blockBGcolor: darken(#fff,1/5*100%);
+
+				border: 1px solid #000000;
+				background-color: $blockBGcolor;
+
 				margin: 0 0 1.5em 0.75em;
 				padding: 0 0 0 0.75em;
 				border-left: 3px solid $blue;
@@ -387,6 +493,54 @@ POSTS & CONTENT STYLES
 				color: $meta-gray;
 
 				&:before {}
+
+				p {
+					margin: 0;
+					margin-bottom: 1em;
+					&:last-child {
+						margin-bottom: 0;
+					}
+				}
+
+				blockquote {
+					border-radius: 4px;
+					box-shadow: 0px;
+
+					padding: 4px;
+					overflow: hidden;
+					text-overflow: ellipsis;
+					margin: 1em 25px;
+				}
+
+				/* Fixes sub-blockquotes */
+				$lightenFactor:5%;
+				>blockquote {
+					background-color: lighten($blockBGcolor, $lightenFactor);
+					>blockquote {
+						background-color: lighten($blockBGcolor, $lightenFactor*2);
+						>blockquote {
+							background-color: lighten($blockBGcolor, $lightenFactor*3);
+							>blockquote {
+								background-color: lighten($blockBGcolor, $lightenFactor*4);
+								>blockquote {
+									background-color: lighten($blockBGcolor, $lightenFactor*5);
+									>blockquote {
+										background-color: lighten($blockBGcolor, $lightenFactor*4);
+										>blockquote {
+											background-color: lighten($blockBGcolor, $lightenFactor*3);
+											>blockquote {
+												background-color: lighten($blockBGcolor, $lightenFactor*2);
+												>blockquote {
+													background-color: lighten($blockBGcolor, $lightenFactor);
+												}
+											}
+										}
+									}
+								}
+							}
+						}
+					}
+				}
 
 			}
 
@@ -481,6 +635,8 @@ POSTS & CONTENT STYLES
 		.size-large {}
 		.size-medium {}
 		.size-thumbnail {}
+	}
+}
 
 	// the tag output
 	.tags {
@@ -820,31 +976,74 @@ COMMENT FORM STYLES
 /*********************
 SIDEBARS & ASIDES
 *********************/
+ #sidebarbox {
+	float: none;
+	width: auto;
+	margin: 0;
+}
 
-.sidebar {}
+.sidebar {
+	/* calendar widget */
+	.widget_calendar {
+		#calendar_wrap {
+			th {}
+			td {}
+			#wp-calendar {
+				text-align: center;
+				width: 100%;
 
-	.widgettitle {}
+				tr td {
+					background-color: $light-gray;
+					border: 1px solid $gray;
+					cursor: default;
+					@include transition(background-color,400ms,ease-in);
+					border-radius: 2px;
+					@include box-sizing(border-box);
 
-	.widget {
+					&:hover {
+						background-color: lighten($light-gray,20%);
+					}
 
-		ul {
+					&#today {
+						/*background-color: #e4e4e4;*/
+						background-color: darken($light-gray,20%);
+					}
 
-			li {
+					&.pad {
+						border: none;
+						background: transparent;
+					}
 
-				&:first-child {}
-
-				&:last-child {}
-
-				a {}
-
-				/* deep nesting */
-				ul {}
-
+					a {
+						font-weight: bold;
+						cursor: pointer;
+						display: block;
+					}
+				}
+				caption, thead th {
+					font-weight: bold;
+					text-transform: uppercase;
+					color: #555;
+				}
+				#prev {}
+				#next {}
+				#next a {}
+				#prev a {}
+				tfoot {
+					tr {
+						border: none;
+						border-color: transparent;
+						td {
+							border: none;
+							border-color: transparent;
+							background: transparent;
+						}
+					}
+				}
 			}
-
 		}
-
 	}
+}
 
 	.no-widgets {
 		background-color: $white;
@@ -861,9 +1060,8 @@ FOOTER STYLES
 
 .footer {
 	clear: both;
-	background-color: $black;
+	background-color: $bar-bgcolor-page;
 	color: $light-gray;
-}
 
 	/*
 	if you checked out the link above:
@@ -884,5 +1082,18 @@ FOOTER STYLES
 
 	} /* end .footer-links */
 
+	#inner-footer {
+		border-radius: 0 0 10px 10px;
+		box-shadow: 4px 4px 10px #111;
+
+		background-color: $bar-bgcolor;
+	}
+	padding-bottom: 8px;
 
 	.copyright {}
+	.attribution {
+		color: #eee;
+		text-align: center;
+	}
+
+}

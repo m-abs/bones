@@ -6,6 +6,8 @@
 <!--[if gt IE 8]><!--> <html <?php language_attributes(); ?> class="no-js"><!--<![endif]-->
 
 	<head>
+		<link href='http<?= !empty( $_SERVER[ "HTTPS" ] ) ? "s" : ""  ?>://fonts.googleapis.com/css?family=Sonsie+One|Asul:400,700' rel='stylesheet' type='text/css'>
+
 		<meta charset="utf-8">
 
 		<?php // force Internet Explorer to use the latest rendering engine available ?>
@@ -34,6 +36,19 @@
 		<?php wp_head(); ?>
 		<?php // end of wordpress head ?>
 
+		<?php /*
+		<script>
+		jQuery( function( $  ) {
+			console.log( $( 'head [rel="stylesheet"][href^="http:\/\/mabs.dk"]' ).each( function( ) {
+				var $this = $( this );
+				console.log( $this.attr( 'href' ) );
+				$this.attr( 'href', $this.attr( 'href' ) + '?r=' + Date.now() );
+				console.log( $this.attr( 'href' ) );
+			} ) );
+		} );
+		</script>
+		*/ ?>
+
 		<?php // drop Google Analytics Here ?>
 		<?php // end analytics ?>
 
@@ -48,14 +63,14 @@
 				<div id="inner-header" class="wrap cf">
 
 					<?php // to use a image just replace the bloginfo('name') with your img src and remove the surrounding <p> ?>
-					<p id="logo" class="h1"><a href="<?php echo home_url(); ?>" rel="nofollow"><?php bloginfo('name'); ?></a></p>
+					<p id="logo" class="h1"><a href="<?php echo home_url(); ?>"  title="<?php htmlspecialchars( bloginfo('name') . ':' . bloginfo('description') ) ?> "rel="nofollow"><?php bloginfo('name'); ?></a></p>
 
 					<?php // if you'd like to use the site description you can un-comment it below ?>
-					<?php // bloginfo('description'); ?>
+					<div class="description"><?php bloginfo('description') ?></div>
 
 
 					<nav role="navigation">
-						<?php wp_nav_menu(array(
+						<?php /*wp_nav_menu(array(
     					'container' => false,                           // remove nav container
     					'container_class' => 'menu cf',                 // class of container (should you choose to use it)
     					'menu' => __( 'The Main Menu', 'bonestheme' ),  // nav name
@@ -67,7 +82,18 @@
         			'link_after' => '',                             // after each link
         			'depth' => 0,                                   // limit the depth of the nav
     					'fallback_cb' => ''                             // fallback function (if there is one)
-						)); ?>
+						)); */?>
+<?php
+	wp_page_menu( array(
+		'show_home' => true,
+		'menu_class' => 'nav top-nav clearfix',      // adding custom nav class
+		'include'     => '',
+		'exclude'     => '',
+		'echo'        => true,
+		'link_before' => '',                            // before each link
+		'link_after' => ''                             // after each link
+	) );
+?>
 
 					</nav>
 

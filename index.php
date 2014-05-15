@@ -4,7 +4,8 @@
 
 				<div id="inner-content" class="wrap cf">
 
-						<div id="main" class="m-all t-2of3 d-5of7 cf" role="main">
+					<div id="main-wrapper">
+						<div id="main" class="m-all t-2of3 d-4of7" role="main">
 
 							<?php if (have_posts()) : while (have_posts()) : the_post(); ?>
 
@@ -58,8 +59,8 @@
 
 							<?php endif; ?>
 
-
 						</div>
+					</div> <!-- #main-wrapper -->
 
 					<?php get_sidebar(); ?>
 

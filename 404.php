@@ -4,7 +4,8 @@
 
 				<div id="inner-content" class="wrap cf">
 
-					<div id="main" class="m-all t-2of3 d-5of7 cf" role="main">
+					<div id="main-wrapper">
+					<div id="main" class="m-all t-2of3 d-4of7" role="main">
 
 						<article id="post-not-found" class="hentry cf">
 
@@ -36,6 +37,7 @@
 
 					</div>
 
+				</div>
 				</div>
 
 			</div>
