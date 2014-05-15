@@ -4,7 +4,8 @@
 
 				<div id="inner-content" class="wrap cf">
 
-					<main id="main" class="m-all t-2of3 d-5of7 cf" role="main">
+					<div id="main-wrapper">
+					<main id="main" class="m-all t-2of3 d-4of7 cf" role="main">
 						<h1 class="archive-title"><span><?php _e( 'Search Results for:', 'bonestheme' ); ?></span> <?php echo esc_attr(get_search_query()); ?></h1>
 
 						<?php if (have_posts()) : while (have_posts()) : the_post(); ?>
@@ -64,10 +65,10 @@
 							<?php endif; ?>
 
 						</main>
+					</div> <!-- #main-wrapper -->
 
-							<?php get_sidebar(); ?>
-
-					</div>
+					<?php get_sidebar(); ?>
+				</div>
 
 			</div>
 

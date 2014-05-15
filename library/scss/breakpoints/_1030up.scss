@@ -12,3 +12,34 @@ be seen on the Desktop.
 .wrap {
   width: 1040px;
 }
+
+#content {
+	#inner-content {
+		#main-wrapper {
+			float: left;
+			width: 100%;
+			#main {
+				margin: 0 auto;
+				float: none;
+			}
+		}
+	}
+}
+/*********************
+SIDEBARS & ASIDES
+*********************/
+.sidebar {
+	position: relative;
+	&#sidebar-1 {
+		float: left;
+		left: -100%;
+		margin: 0;
+		margin-right: -22.928176794%;
+	}
+	
+	&#sidebar-2 {
+		float: left;
+		margin: 0;
+		margin-left: -22.928176794%;
+	}
+}

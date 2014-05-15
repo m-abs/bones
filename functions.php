@@ -155,7 +155,7 @@ add_action( 'customize_register', 'bones_theme_customizer' );
 // Sidebars & Widgetizes Areas
 function bones_register_sidebars() {
 	register_sidebar(array(
-		'id' => 'sidebar1',
+		'id' => 'sidebar-1',
 		'name' => __( 'Sidebar 1', 'bonestheme' ),
 		'description' => __( 'The first (primary) sidebar.', 'bonestheme' ),
 		'before_widget' => '<div id="%1$s" class="widget %2$s">',
@@ -171,9 +171,10 @@ function bones_register_sidebars() {
 
 	Just change the name to whatever your new
 	sidebar's id is, for example:
+	*/
 
 	register_sidebar(array(
-		'id' => 'sidebar2',
+		'id' => 'sidebar-2',
 		'name' => __( 'Sidebar 2', 'bonestheme' ),
 		'description' => __( 'The second (secondary) sidebar.', 'bonestheme' ),
 		'before_widget' => '<div id="%1$s" class="widget %2$s">',
@@ -182,6 +183,7 @@ function bones_register_sidebars() {
 		'after_title' => '</h4>',
 	));
 
+	/*
 	To call the sidebar in your template, you can just copy
 	the sidebar.php file and rename it to your sidebar's name.
 	So using the above example, it would be:
@@ -243,5 +245,50 @@ function bones_fonts() {
 }
 
 add_action('wp_enqueue_scripts', 'bones_fonts');
+
+/// Added custom_wp_trim_excerpt:
+	 /******************************************************************************
+		* * @Author: Boutros AbiChedid 
+		* * @Date: June 20, 2011
+		* * @Websites: http://bacsoftwareconsulting.com/ ; http://blueoliveonline.com/
+		* * @Description: Preserves HTML formating to the automatically generated Excerpt.
+		* * Also Code modifies the default excerpt_length and excerpt_more filters.
+		* *******************************************************************************/
+		function custom_wp_trim_excerpt($text) {
+			$raw_excerpt = $text;
+			if ( '' == $text ) {
+				$text = get_the_content('');
+		
+				$text = strip_shortcodes( $text );
+		
+				$text = apply_filters('the_content', $text);
+				$text = str_replace(']]>', ']]&gt;', $text);
+		
+				/***Add the allowed HTML tags separated by a comma.***/
+				$allowed_tags = '<p>,<a>,<em>,<strong>,<ul>,<li>,<br>';
+				$text = strip_tags($text, $allowed_tags);
+		
+				/***Change the excerpt word count.***/
+				$excerpt_word_count = 60; 
+				$excerpt_length = apply_filters('excerpt_length', $excerpt_word_count); 
+		
+				/*** Change the excerpt ending.***/
+				$excerpt_end = ' <a href="'. get_permalink($post->ID) . '">' . '&raquo; Continue Reading.' . '</a>'; 
+				$excerpt_more = apply_filters('excerpt_more', ' ' . $excerpt_end);
+		
+				$words = preg_split("/[\n\r\t ]+/", $text, $excerpt_length + 1, PREG_SPLIT_NO_EMPTY);
+				if ( count($words) > $excerpt_length ) {
+					array_pop($words);
+					$text = implode(' ', $words);
+					$text = $text . $excerpt_more;
+				} else {
+					$text = implode(' ', $words);
+				}
+			}
+			return apply_filters('custom_wp_trim_excerpt', $text, $raw_excerpt);
+		}
+		remove_filter('get_the_excerpt', 'wp_trim_excerpt');
+		add_filter('get_the_excerpt', 'custom_wp_trim_excerpt');
+/// END - Added custom_wp_trim_excerpt:
 
 /* DON'T DELETE THIS CLOSING TAG */ ?>

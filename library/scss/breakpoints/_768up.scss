@@ -31,7 +31,16 @@ LAYOUT & GRID STYLES
 HEADER STYLES
 *********************/
 
-.header {}
+.header {
+	padding-top: 10px;
+
+	#inner-header {
+		border-radius: 10px 10px 0 0;
+
+		padding-top: 10px;
+	}
+
+}
 
 	#logo {}
 
@@ -142,11 +151,11 @@ SIDEBARS & ASIDES
 *********************/
 
 .sidebar {
-	margin-top: 2.2em;
-}
+	/*margin-top: 2.2em;*/
+
 
 	.widgettitle {
-		border-bottom: 2px solid #444;
+		/*border-bottom: 2px solid #444;*/
 		margin-bottom: 0.75em;
 	}
 
@@ -166,10 +175,12 @@ SIDEBARS & ASIDES
 				ul {
 					margin-top: 0.75em;
 					padding-left: 1em;
+
 				}
 			}
 		}
 	}
+}
 
 
 	/* links widget */
@@ -244,16 +255,22 @@ SIDEBARS & ASIDES
 
 	/* recent-comments widget */
 	.recentcomments {}
-	#recentcomments {}
-	#recentcomments li {}
-	#recentcomments li a {}
+	#recentcomments {
+		li {
+			a {}
+		}
+	}
 	.widget_recent_comments {}
 
 	/* search widget */
-	#searchform {}
-	.widget_search {}
-	.screen-reader-text {}
-
+	.widget_search {
+		#searchform {
+			.screen-reader-text {
+				display: none;
+			}
+		}
+	}
+	
 	/* text widget */
 	.textwidget {}
 	.widget_text {}
