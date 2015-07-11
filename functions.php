@@ -1,18 +1,15 @@
 <?php
 /*
 Author: Eddie Machado
-URL: htp://themble.com/bones/
+URL: http://themble.com/bones/
 
 This is where you can drop your custom functions or
 just edit things like thumbnail sizes, header images,
-sidebars, comments, ect.
+sidebars, comments, etc.
 */
 
 // LOAD BONES CORE (if you remove this, the theme will break)
 require_once( 'library/bones.php' );
-
-// USE THIS TEMPLATE TO CREATE CUSTOM POST TYPES EASILY
-require_once( 'library/custom-post-type.php' );
 
 // CUSTOMIZE THE WORDPRESS ADMIN (off by default)
 // require_once( 'library/admin.php' );
@@ -24,8 +21,14 @@ Let's get everything up and running.
 
 function bones_ahoy() {
 
+  //Allow editor style.
+  add_editor_style( get_stylesheet_directory_uri() . '/library/css/editor-style.css' );
+
   // let's get language support going, if you need it
   load_theme_textdomain( 'bonestheme', get_template_directory() . '/library/translation' );
+
+  // USE THIS TEMPLATE TO CREATE CUSTOM POST TYPES EASILY
+  require_once( 'library/custom-post-type.php' );
 
   // launching operation cleanup
   add_action( 'init', 'bones_head_cleanup' );
@@ -64,7 +67,7 @@ add_action( 'after_setup_theme', 'bones_ahoy' );
 /************* OEMBED SIZE OPTIONS *************/
 
 if ( ! isset( $content_width ) ) {
-	$content_width = 640;
+	$content_width = 680;
 }
 
 /************* THUMBNAIL SIZE OPTIONS *************/
@@ -83,10 +86,10 @@ auto-cropped.
 To call a different size, simply change the text
 inside the thumbnail function.
 
-For example, to call the 300 x 300 sized image,
+For example, to call the 300 x 100 sized image,
 we would use the function:
 <?php the_post_thumbnail( 'bones-thumb-300' ); ?>
-for the 600 x 100 image:
+for the 600 x 150 image:
 <?php the_post_thumbnail( 'bones-thumb-600' ); ?>
 
 You can change the names and dimensions to whatever
@@ -109,6 +112,43 @@ when you add media to your content blocks. If you add more image sizes,
 duplicate one of the lines in the array and name it according to your
 new image size.
 */
+
+/************* THEME CUSTOMIZE *********************/
+
+/* 
+  A good tutorial for creating your own Sections, Controls and Settings:
+  http://code.tutsplus.com/series/a-guide-to-the-wordpress-theme-customizer--wp-33722
+  
+  Good articles on modifying the default options:
+  http://natko.com/changing-default-wordpress-theme-customization-api-sections/
+  http://code.tutsplus.com/tutorials/digging-into-the-theme-customizer-components--wp-27162
+  
+  To do:
+  - Create a js for the postmessage transport method
+  - Create some sanitize functions to sanitize inputs
+  - Create some boilerplate Sections, Controls and Settings
+*/
+
+function bones_theme_customizer($wp_customize) {
+  // $wp_customize calls go here.
+  //
+  // Uncomment the below lines to remove the default customize sections 
+
+  // $wp_customize->remove_section('title_tagline');
+  // $wp_customize->remove_section('colors');
+  // $wp_customize->remove_section('background_image');
+  // $wp_customize->remove_section('static_front_page');
+  // $wp_customize->remove_section('nav');
+
+  // Uncomment the below lines to remove the default controls
+  // $wp_customize->remove_control('blogdescription');
+  
+  // Uncomment the following to change the default section titles
+  // $wp_customize->get_section('colors')->title = __( 'Theme Colors' );
+  // $wp_customize->get_section('background_image')->title = __( 'Images' );
+}
+
+add_action( 'customize_register', 'bones_theme_customizer' );
 
 /************* ACTIVE SIDEBARS ********************/
 
@@ -201,13 +241,55 @@ can replace these fonts, change it in your scss files
 and be up and running in seconds.
 */
 function bones_fonts() {
-  wp_register_style('googleFonts', 'http://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic');
-  wp_enqueue_style( 'googleFonts');
+  wp_enqueue_style('googleFonts', 'http://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic');
 }
 
-add_action('wp_print_styles', 'bones_fonts');
+add_action('wp_enqueue_scripts', 'bones_fonts');
 
-
+/// Added custom_wp_trim_excerpt:
+	 /******************************************************************************
+		* * @Author: Boutros AbiChedid 
+		* * @Date: June 20, 2011
+		* * @Websites: http://bacsoftwareconsulting.com/ ; http://blueoliveonline.com/
+		* * @Description: Preserves HTML formating to the automatically generated Excerpt.
+		* * Also Code modifies the default excerpt_length and excerpt_more filters.
+		* *******************************************************************************/
+		function custom_wp_trim_excerpt($text) {
+			$raw_excerpt = $text;
+			if ( '' == $text ) {
+				$text = get_the_content('');
+		
+				$text = strip_shortcodes( $text );
+		
+				$text = apply_filters('the_content', $text);
+				$text = str_replace(']]>', ']]&gt;', $text);
+		
+				/***Add the allowed HTML tags separated by a comma.***/
+				$allowed_tags = '<p>,<a>,<em>,<strong>,<ul>,<li>,<br>';
+				$text = strip_tags($text, $allowed_tags);
+		
+				/***Change the excerpt word count.***/
+				$excerpt_word_count = 60; 
+				$excerpt_length = apply_filters('excerpt_length', $excerpt_word_count); 
+		
+				/*** Change the excerpt ending.***/
+				$excerpt_end = ' <a href="'. get_permalink($post->ID) . '">' . '&raquo; Continue Reading.' . '</a>'; 
+				$excerpt_more = apply_filters('excerpt_more', ' ' . $excerpt_end);
+		
+				$words = preg_split("/[\n\r\t ]+/", $text, $excerpt_length + 1, PREG_SPLIT_NO_EMPTY);
+				if ( count($words) > $excerpt_length ) {
+					array_pop($words);
+					$text = implode(' ', $words);
+					$text = $text . $excerpt_more;
+				} else {
+					$text = implode(' ', $words);
+				}
+			}
+			return apply_filters('custom_wp_trim_excerpt', $text, $raw_excerpt);
+		}
+		remove_filter('get_the_excerpt', 'wp_trim_excerpt');
+		add_filter('get_the_excerpt', 'custom_wp_trim_excerpt');
+/// END - Added custom_wp_trim_excerpt:
 
 /// Added custom_wp_trim_excerpt:
 	 /******************************************************************************

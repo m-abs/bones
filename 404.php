@@ -5,7 +5,7 @@
 				<div id="inner-content" class="wrap cf">
 
 					<div id="main-wrapper">
-					<div id="main" class="m-all t-2of3 d-4of7" role="main">
+					<main id="main" class="m-all t-2of3 d-4of7 cf" role="main" itemscope itemprop="mainContentOfPage" itemtype="http://schema.org/Blog">
 
 						<article id="post-not-found" class="hentry cf">
 
@@ -35,6 +35,7 @@
 
 						</article>
 
+					</main>
 					</div>
 
 				</div>
