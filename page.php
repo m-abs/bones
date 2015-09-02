@@ -55,7 +55,7 @@
 
 							</article>
 
-							<?php endwhile; endif; ?>
+							<?php endwhile; else: ?>
 
 									<article id="post-not-found" class="hentry cf">
 										<header class="article-header">
